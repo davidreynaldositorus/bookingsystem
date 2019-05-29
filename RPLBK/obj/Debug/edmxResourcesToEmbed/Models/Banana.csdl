@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BananaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Layanan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="jenis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="durasi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kapasitas" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="harga" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Pemesanans" Relationship="Self.FK__Pemesanan__id_la__1A14E395" FromRole="Layanan" ToRole="Pemesanan" />
+  </EntityType>
+  <EntityType Name="Pemesanan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_layanan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tanggalpemesanan" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tanggaldipesan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="biaya" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Layanan" Relationship="Self.FK__Pemesanan__id_la__1A14E395" FromRole="Pemesanan" ToRole="Layanan" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Pemesanan__id_us__1B0907CE" FromRole="Pemesanan" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nomorhp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Pemesanans" Relationship="Self.FK__Pemesanan__id_us__1B0907CE" FromRole="Users" ToRole="Pemesanan" />
+  </EntityType>
+  <Association Name="FK__Pemesanan__id_la__1A14E395">
+    <End Role="Layanan" Type="Self.Layanan" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pemesanan" Type="Self.Pemesanan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Layanan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pemesanan">
+        <PropertyRef Name="id_layanan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pemesanan__id_us__1B0907CE">
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pemesanan" Type="Self.Pemesanan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pemesanan">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BananaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Layanans" EntityType="Self.Layanan" />
+    <EntitySet Name="Pemesanans" EntityType="Self.Pemesanan" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Pemesanan__id_la__1A14E395" Association="Self.FK__Pemesanan__id_la__1A14E395">
+      <End Role="Layanan" EntitySet="Layanans" />
+      <End Role="Pemesanan" EntitySet="Pemesanans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pemesanan__id_us__1B0907CE" Association="Self.FK__Pemesanan__id_us__1B0907CE">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Pemesanan" EntitySet="Pemesanans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

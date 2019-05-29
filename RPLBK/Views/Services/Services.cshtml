@@ -1,0 +1,104 @@
+﻿@model IEnumerable<RPLBK.Models.Services>
+
+@{
+    ViewBag.Title = "Layanan";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+	<!-- start banner Area -->
+    <section class="about-banner relative" style="margin-bottom:5px; margin-top:5px;">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Layanan
+                    </h1>
+                    <p class="text-white link-nav">Tersedia berbagai jenis Banana Boat dan Saung dengan suasana yang bagus dan harga yang terjangkau.</p>
+                    <p class="text-white link-nav">Ayo cek semuanya diawah !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+
+    <!-- Start destinations Area -->
+    <section class="destinations-area section-gap">
+        <div class="container">
+            <div style="text-align:center; padding-top:20px; padding-bottom:20px;">
+               @if (Session["email"].ToString() == "admin@gmail.com")
+               {
+                   @Html.ActionLink("Tambah Jenis Layanan", "Create", new { controller = "Services" }, new { @class = "price-btn" })
+               }
+               else
+               {
+
+               }
+
+            </div>
+            <div class="row">
+
+@foreach (var item in Model)
+{
+                <div class="col-lg-4" style="margin-bottom:30px;">
+                    <div class="single-destinations">
+                        <div class="thumb">
+                            <img src="~/Content/Template/img/@Html.DisplayFor(modelItem => item.foto)" alt="" style="width:370px; height:220px;">
+                        </div>
+                        <div class="details">
+                            <h4 class="d-flex justify-content-between">
+                                <span>@Html.DisplayFor(modelItem => item.deskripsi)</span>
+                            </h4>
+                            <ul class="package-list">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Jenis Layanan</span>
+                                    <span>@Html.DisplayFor(modelItem => item.Types.jenis)</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Durasi (menit)</span>
+                                    <span>@Html.DisplayFor(modelItem => item.durasi)</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Kapasitas (orang)</span>
+                                    <span>@Html.DisplayFor(modelItem => item.kapasitas)</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Harga (Rp.)</span>
+                                    <span>@Html.DisplayFor(modelItem => item.harga)</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                </li>
+                            </ul>
+
+                            @if (Session["email"] != null)
+                            {
+                                if(Session["email"].ToString() != "admin@gmail.com")
+                                {
+                                    @Html.ActionLink("Pesan", "Details", "Services", new { id = item.id }, null)
+                                }
+
+                                else
+                                {
+                                    @Html.ActionLink("Perbaharui Data", "Edit", "Services", new { id = item.id }, null)
+                                    <span style="padding-left:10px; padding-right:10px">|</span>
+                                    <a href="@Url.Action("Delete","Services", new { id = item.id})" onclick="return confirm('Yakin?')">Hapus</a>
+                                }
+
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Pesan", "Login", "Users", new { id = item.id }, null)
+                            }
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+}
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End destinations Area -->
+

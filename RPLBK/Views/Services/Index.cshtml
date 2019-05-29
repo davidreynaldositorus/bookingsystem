@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RPLBK.Models.Services>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+    @Html.ActionLink("Create New", "Create")
+
+
+
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.durasi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kapasitas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.harga)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Types.jenis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

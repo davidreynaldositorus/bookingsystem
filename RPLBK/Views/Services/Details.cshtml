@@ -1,0 +1,70 @@
+﻿@model RPLBK.Models.Services
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="banner-areas relative" style="margin-bottom:5px; margin-top:5px;">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+    </div>
+</section>
+<!-- End banner Area -->
+
+
+
+
+<section class="destinations-area section-gap">
+    <div class="container">
+        <div style="padding-top:20px; padding-bottom:20px;">
+            <div>
+                <h3>Detail Layanan : </h3>
+                <br>
+                <div class="thumb">
+                    <img src="~/Content/Template/img/@Html.DisplayFor(model=> model.foto)" alt="" style="width:370px; height:220px; border-radius:10px;">
+                </div>
+                <br>
+                <table style="letter-spacing: 2px;">
+                    <tr>
+                        <th>Deskripsi</th>
+                        <th> : </th>
+                        <td>@Html.DisplayFor(model => model.deskripsi) </td>
+                    </tr>
+                    <tr>
+                        <th>Durasi penggunaan</th>
+                        <th> : </th>
+                        <td>@Html.DisplayFor(model => model.durasi) menit</td>
+                    </tr>
+                    <tr>
+                        <th>Kapasitas pengunjung</th>
+                        <th> : </th>
+                        <td>@Html.DisplayFor(model => model.kapasitas) orang</td>
+                    </tr>
+                    <tr>
+                        <th>Harga</th>
+                        <th> : </th>
+                        <td>Rp. @Html.DisplayFor(model => model.harga)</td>
+                    </tr>
+                    <tr>
+                        <th>Jenis layanan</th>
+                        <th> : </th>
+                        <td>@Html.DisplayFor(model => model.Types.jenis)</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        <div style="text-align:center; " class="genric-btn primary" >
+            @Html.ActionLink("Pesan", "Create", "Orders", new { id = Model.id }, null)
+            
+        </div>
+        <br><br>
+    </div>
+</section>
+
+
+
+       
+   

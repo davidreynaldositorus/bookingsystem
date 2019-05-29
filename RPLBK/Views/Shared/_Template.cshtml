@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="zxx" class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Template/")img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>ToBana</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/linearicons.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/font-awesome.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/bootstrap.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/magnific-popup.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/jquery-ui.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/nice-select.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/animate.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/owl.carousel.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Template/")css/main.css">
+    <script src="@Url.Content("~/Content/Template/")js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/popper.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/vendor/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="@Url.Content("~/Content/Template/")js/jquery-ui.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/easing.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/hoverIntent.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/superfish.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/jquery.ajaxchimp.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/jquery.magnific-popup.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/jquery.nice-select.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/owl.carousel.min.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/mail-script.js"></script>
+    <script src="@Url.Content("~/Content/Template/")js/main.js"></script>
+    
+
+
+</head>
+<body style="background-color:black;">
+    <header id="header">
+        <div class="container main-menu">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <img src="@Url.Content("~/Content/Template/")img/logo.png" alt="" title="" height="45" width="150" />
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li>@Html.ActionLink("Beranda", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Layanan", "Services", "Services")</li>
+                        @if (Session["email"] != null)
+                        {
+                            <li>@Html.ActionLink("Pemesanan", "Index", "Orders")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Pemesanan", "Login", "Users")</li>
+                        }
+                        
+                        
+                        @if (Session["email"] != null)
+                        {
+                            <li>@Html.ActionLink("Logout", "Logout", "Users")</li><li><div style="color:white;">( @Session["email"] )</div></li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Masuk", "Login", "Users")</li>
+                        }
+
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer class="footer-area section-gap">
+        <div class="container">
+            <p class="col-lg-8 col-sm-12 footer-text m-0">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | 	Created By Kelompok TA-17
+            </p>
+        </div>
+    </footer>
+</body>
+
+
+</html>

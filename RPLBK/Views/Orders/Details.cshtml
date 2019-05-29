@@ -1,0 +1,67 @@
+﻿@model RPLBK.Models.Orders
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Orders</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tanggalpemesanan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tanggalpemesanan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tanggaldipesan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tanggaldipesan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.biaya)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.biaya)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Services.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Services.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.nama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RPLBK.Models.Users>
+
+@{
+    ViewBag.Title = "IndexLogin";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<h2>IndexLogin</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomorhp)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomorhp)
+        </td>
+        
+        
+    </tr>
+}
+
+</table>

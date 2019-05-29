@@ -1,0 +1,139 @@
+﻿@model IEnumerable<RPLBK.Models.Orders>
+
+@{
+    ViewBag.Title = "Pemesanan";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="about-banner relative" style="margin-bottom:5px; margin-top:5px;">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Pemesanan
+                </h1>
+                <p class="text-white link-nav">Cek pemesanan kamu dibawah dan jangan lupa untuk memesan lagi !</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End banner Area -->
+<section class="popular-destination-area section-gap" style="background-color:white; padding-top:30px; padding-bottom:35px; color:black;">
+    <div class="container">
+        <div class="row d-flex justify-content-left" style="color:black;">
+            <div class="menu-content pb-70 col-lg-12" style="text-align:center;">
+                <img src="@Url.Content("~/Content/Template/")img/alur.png" alt="" title="" height="160px" width="700px" /><br><br>
+                    <p><h3>Instruksi Pemesanan Layanan :</h3></p>
+                <p>1. Ketika proses pemesanan selesai, kamu harus menunggu konfirmasi oleh Admin, yang berhak menerima dan menolak pesananmu.</p>
+                <p>2. Ketika Admin menyetujui pesananmu, kamu akan mendapatkan kode unik yang akan digunakan untuk pembayaran sesuai dengan pemilik layanan.</p>
+                <p>3. Kode Pembayaran berlaku sebelum batas waktu yang ditentukan dan akan hangus pada proses pembayaran apabila melewati batas yang telah ditentukan. </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Nama Pemesan
+                            </th>
+                            <th>
+                                Jenis Layanan yang dipesan
+                            </th>
+                            <th>
+                                Tanggal Pemesanan
+                            </th>
+                            <th>
+                                Tanggal yang dipesan
+                            </th>
+                            <th>
+                                Biaya
+                            </th>
+                            <th>
+                                Kode Pembayaran
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            @if (Session["email"].ToString() == "admin@gmail.com")
+                            {
+                                <th>
+                                    Aksi
+                                </th>
+                            }
+                            else
+                            {
+
+                            }
+
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Users.nama)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Services.Types.jenis)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tanggalpemesanan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tanggaldipesan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.biaya)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.kode)
+                                </td>
+                                <td>
+                                    @if (item.status == "Diterima")
+                                    {
+                                        <h6 class="btn btn-success">@Html.DisplayFor(modelItem => item.status)</h6>
+                                    }
+                                    else
+                                    {
+                                        <h6 class="btn btn-danger">@Html.DisplayFor(modelItem => item.status)</h6>
+                                    }
+                                    
+                                </td>
+                                <td>
+                                 
+                                @if (Session["email"].ToString() == "admin@gmail.com")
+                                {
+                                    if (item.status != "Diterima" && item.status != "Ditolak")
+                                    {
+                                        <a href="@Url.Action("Terima","Orders", new { id = item.id })" onclick="return confirm('Yakin?');">Terima</a> <span> | </span>
+                                        <a href="@Url.Action("Tolak","Orders", new { id = item.id })" onclick="return confirm('Yakin?');">Tolak</a> 
+                                           
+                                    }
+                                    else if (item.status == "Diterima")
+                                    {
+                                        <h6 class="btn btn-success">Transaksi Berhasil</h6>
+                                    }
+                                    else
+                                    {
+                                        <h6 class="btn btn-danger">Transaksi Ditolak</h6>
+                                    }
+
+                                }
+                                else
+                                {
+
+                                }
+
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+</section>

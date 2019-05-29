@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BananaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="id_layanan" Type="Int32" Nullable="false" />
+    <Property Name="tanggalpemesanan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tanggaldipesan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="biaya" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Services" Relationship="Self.FK__Pemesanan__id_la__173876EA" FromRole="Orders" ToRole="Services" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Pemesanan__id_us__164452B1" FromRole="Orders" ToRole="Users" />
+    <Property Name="kode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="jumlah" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jenis" Type="Int32" />
+    <Property Name="durasi" Type="Int32" Nullable="false" />
+    <Property Name="kapasitas" Type="Int32" Nullable="false" />
+    <Property Name="harga" Type="Int32" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Pemesanan__id_la__173876EA" FromRole="Services" ToRole="Orders" />
+    <NavigationProperty Name="Types" Relationship="Self.FK__Layanan__jenis__1B0907CE" FromRole="Services" ToRole="Types" />
+    <Property Name="deskripsi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jenis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Services" Relationship="Self.FK__Layanan__jenis__1B0907CE" FromRole="Types" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nomorhp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Pemesanan__id_us__164452B1" FromRole="Users" ToRole="Orders" />
+  </EntityType>
+  <Association Name="FK__Pemesanan__id_la__173876EA">
+    <End Role="Services" Type="Self.Services" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="id_layanan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pemesanan__id_us__164452B1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Layanan__jenis__1B0907CE">
+    <End Role="Types" Type="Self.Types" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="jenis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BananaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Services" EntityType="Self.Services" />
+    <EntitySet Name="Types" EntityType="Self.Types" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__Pemesanan__id_la__173876EA" Association="Self.FK__Pemesanan__id_la__173876EA">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pemesanan__id_us__164452B1" Association="Self.FK__Pemesanan__id_us__164452B1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Layanan__jenis__1B0907CE" Association="Self.FK__Layanan__jenis__1B0907CE">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BananaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Layanan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="jenis" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="durasi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="kapasitas" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="harga" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="foto" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pemesanan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_layanan" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tanggalpemesanan" Type="datetime" Nullable="false" />
+    <Property Name="tanggaldipesan" Type="date" Nullable="false" />
+    <Property Name="biaya" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="kode" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="nama" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="nomorhp" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Pemesanan__id_la__1A14E395">
+    <End Role="Layanan" Type="Self.Layanan" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pemesanan" Type="Self.Pemesanan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Layanan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pemesanan">
+        <PropertyRef Name="id_layanan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pemesanan__id_us__1B0907CE">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pemesanan" Type="Self.Pemesanan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pemesanan">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BananaModelStoreContainer">
+    <EntitySet Name="Layanan" EntityType="Self.Layanan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pemesanan" EntityType="Self.Pemesanan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Pemesanan__id_la__1A14E395" Association="Self.FK__Pemesanan__id_la__1A14E395">
+      <End Role="Layanan" EntitySet="Layanan" />
+      <End Role="Pemesanan" EntitySet="Pemesanan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pemesanan__id_us__1B0907CE" Association="Self.FK__Pemesanan__id_us__1B0907CE">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Pemesanan" EntitySet="Pemesanan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

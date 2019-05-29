@@ -1,0 +1,100 @@
+﻿@model RPLBK.Models.Services
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+
+<!-- start banner Area -->
+<section class="banner-areas relative" style="margin-bottom:5px; margin-top:5px;">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+@using (Html.BeginForm("Create","Services", FormMethod.Post,
+    new { enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    <section class="contact-page-area section-gap" style="margin-bottom:5px; margin-top:5px;">
+        <div class="container">
+            <div class="row">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-lg-6 d-flex flex-column address-wrap">
+                        <p><h2 style="margin-top:10px;">BUAT&nbsp;LAYANAN</h2></p>
+                        <div class="form-group">
+                        <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                            <div class="contact-details">
+                                <h5 style="margin-bottom:20px;">Jenis Layanan</h5>
+                                @Html.DropDownList("jenis", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.jenis, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                                <div class="contact-details">
+                                    <h5 style="margin-bottom:20px;">Deskripsi</h5>
+                                    @Html.TextAreaFor(model => model.deskripsi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.deskripsi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                            <div class="contact-details">
+                                <h5 style="margin-bottom:20px;">Durasi (jam)</h5>
+                                @Html.EditorFor(model => model.durasi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.durasi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                            <div class="contact-details">
+                                <h5 style="margin-bottom:20px;">Kapasitas (orang)</h5>
+                                @Html.EditorFor(model => model.kapasitas, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.kapasitas, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                            <div class="contact-details">
+                                <h5 style="margin-bottom:20px;">Harga (Rp.)</h5>
+                                @Html.EditorFor(model => model.harga, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.harga, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <div class="single-contact-address d-flex flex-row " style="margin-bottom:10px; margin-top:10px;">
+                            <div class="contact-details">
+                                <h5 style="margin-bottom:20px;">Foto</h5>
+                                <input type="file" name="FileUpload" />
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-8" style="text-align:center;">
+                                <div style="margin-bottom:10px; margin-top:10px;">
+                                    <input type="submit" value="Buat" class="genric-btn primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

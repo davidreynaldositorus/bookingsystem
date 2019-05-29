@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BananaModelStoreContainer" CdmEntityContainer="BananaEntities">
+    <EntitySetMapping Name="Layanans">
+      <EntityTypeMapping TypeName="BananaModel.Layanan">
+        <MappingFragment StoreEntitySet="Layanan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="jenis" ColumnName="jenis" />
+          <ScalarProperty Name="durasi" ColumnName="durasi" />
+          <ScalarProperty Name="kapasitas" ColumnName="kapasitas" />
+          <ScalarProperty Name="harga" ColumnName="harga" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pemesanans">
+      <EntityTypeMapping TypeName="BananaModel.Pemesanan">
+        <MappingFragment StoreEntitySet="Pemesanan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_layanan" ColumnName="id_layanan" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="tanggalpemesanan" ColumnName="tanggalpemesanan" />
+          <ScalarProperty Name="tanggaldipesan" ColumnName="tanggaldipesan" />
+          <ScalarProperty Name="biaya" ColumnName="biaya" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="kode" ColumnName="kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BananaModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="nomorhp" ColumnName="nomorhp" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

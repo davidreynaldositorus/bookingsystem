@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Beranda";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative" style="margin-bottom:5px; margin-top:5px;">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-12 col-md-6 banner-left">
+                <h3 class="text-white">Bingung ingin mencari permainan air dengan harga terjangkau di Balige?</h3>
+                <br>
+                <h1 class="text-white">ToBana</h1>
+                <p class="text-white"><h4 class="text-white">
+    Solusi buat kamu yang ingin bermain Banana Boat dengan harga yang terjangkau dengan berbagai penawaran yang tidak didapatkan dimanapun !
+</h4></p><br></br>
+                <div style="text-align:center;">@Html.ActionLink("Pesan sekarang juga", "Services", new { controller = "Services" }, new { @class = "price-btn" })</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+
+<!-- Start popular-destination Area -->
+<section class="popular-destination-area section-gap" style="background-color:white; padding-top:30px; padding-bottom:35px;">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Layanan</h1>
+                    <p>ToBana menyediakan layanan hiburan yang dapat dinikmati setiap orang yang berada di Pantai Lumban BulBul Balige, Sumatera Utara.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="single-destination relative">
+                    <div class="thumb relative">
+                        <div class="overlay overlay-bg"></div>
+                        <img class="img-fluid" src="@Url.Content("~/Content/Template/")img/banana.png" alt="" height="400" width="400">
+                    </div>
+                    <div class="desc">
+                        @Html.ActionLink("Pesan", "Services", new { controller = "Services"}, new { @class = "price-btn" })
+                    </div>
+                    <br>
+                </div>
+                <div style="text-align:center"><a href="#"><h2 class="mb-10">Banana Boat</h2></a></div>
+            </div>
+            <div class="col-lg-6 ">
+                <div class="single-destination relative">
+                    <div class="thumb relative">
+                        <div class="overlay overlay-bg"></div>
+                        <img class="img-fluid" src="@Url.Content("~/Content/Template/")img/saung.png" alt="" height="400" width="400">
+                    </div>
+                    <div class="desc">
+                        @Html.ActionLink("Pesan", "Services", new { controller = "Services" }, new { @class = "price-btn" })
+                    </div>
+                    <br>
+                </div>
+                <div style="text-align:center"><a href="#"><h2 class="mb-10">Saung</h2></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End popular-destination Area -->
+
+
+<!--Start Location-->
+<section class="recent-blog-area section-gap">
+    <div class="whole-wrap" style="background-color:#f8b600; opacity: 0.8; color:black;">
+        <div class="container">
+            <div class="section-top-border">
+                <div class="row d-flex justify-content-center">
+                    <div class="menu-content pb-70 col-lg-8">
+                        <div class="title text-center">
+                            <h1 class="mb-10">Lokasi</h1>
+                            <p>ToBana yang hanya berlaku di Pantai Lumban BulBul Balige, Sumatera Utara.</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.467416115348!2d99.07104661475553!3d2.3484021982885017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e041198ee45d1%3A0x7438dfa4c9a63950!2sPantai+BUL+BUL!5e0!3m2!1sen!2sid!4v1557301978565!5m2!1sen!2sid" width="450" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-md-7 mt-sm-20 left-align-p" style="text-align:justify">
+                        <p>Kota Balige yang merupakan pusat ibukota dari Kabupaten Toba Samosir ini kini terlihat semakin berbenah khususnya di sektor wisata. Kota Balige yang persis berada dekat dengan pinggiran perairan Danau Toba, membuat akses menuju daerah2 sekitar Danau Toba mudah terjangkau baik dari jalur darat maupun jalur air.Apalagi Kota Balige sangat dekat dengan Bandara Internasional Silangit berjarak lebih kurang 20 kilometer, hanya membutuhkan waktu 30-50 menit saja. Inilah salah satu alasan utama mengapa daerah kota Balige harus tetap berbenah mengembangkan semua sektor khususnya sektor wisata.Anda beranjak dari kota Medan maka jarak yang ditempuh lebih kurang 240 kilometer atau 6 jam dengan menggunakan kenderaan roda empat, dimana sepanjang jalan Anda akan disungguhkan dengan pemandangan alam Danau Toba serta hamparan sawah yang luas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Location-->
+
+<!-- Start top-category-widget Area -->
+<section class="top-category-widget-area pt-90 pb-90 ">
+    <div class="container">
+
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Jaminan</h1>
+                    <p>ToBana menyediakan jaminan yang dapat dinikmati oleh semua wisatawan tanpa terkecuali di Pantai Lumban BulBul Balige, Sumatera Utara.</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-cat-widget">
+                    <div class="content relative">
+                        <div class="overlay overlay-bg"></div>
+                        <a href="#" target="_blank">
+                            <div class="thumb">
+                                <img class="content-image img-fluid d-block mx-auto" src="@Url.Content("~/Content/Template/")img/bulbul.jpeg" alt="" style="width:500px; height:200px;">
+                            </div>
+                            <div class="content-details">
+                                <h4 class="content-title mx-auto text-uppercase">Lingkungan Bersih</h4>
+                                <span></span>
+                                <p>Lingkungan di Pantai BulBul yang dirawat</p><p> agar bersih setiap harinya</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-cat-widget">
+                    <div class="content relative">
+                        <div class="overlay overlay-bg"></div>
+                        <a href="#" target="_blank">
+                            <div class="thumb">
+                                <img class="content-image img-fluid d-block mx-auto" src="@Url.Content("~/Content/Template/")img/ramah.jpg" alt="" style="width:500px; height:200px;">
+                            </div>
+                            <div class="content-details">
+                                <h4 class="content-title mx-auto text-uppercase">Sikap Ramah </h4>
+                                <span></span>
+                                <p>Seluruh masyarakat disekitar sangat</p><p> ramah satu sama lain</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-cat-widget">
+                    <div class="content relative">
+                        <div class="overlay overlay-bg"></div>
+                        <a href="#" target="_blank">
+                            <div class="thumb">
+                                <img class="content-image img-fluid d-block mx-auto" src="@Url.Content("~/Content/Template/")img/harga.jpg" alt="" style="width:500px; height:200px;">
+                            </div>
+                            <div class="content-details">
+                                <h4 class="content-title mx-auto text-uppercase">Harga Bersahabat</h4>
+                                <span></span>
+                                <p>Harga yang berada di Pantai BulBul</p><p> sangat terjangkau</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End top-category-widget Area -->
+
