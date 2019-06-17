@@ -17,7 +17,7 @@ http://localhost:5084/
 ```
 
 ### Note
-The project need ```rplbk.sql``` as the sample job documents.
+The project need ```rplbk.sql``` as the database.
 So if you need the data you can ask me from email.
 
 My Email : [davidreynaldositorus@gmail.com]
